@@ -1,15 +1,6 @@
 package;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.math.FlxMath;
-import flixel.math.FlxRect;
-import flixel.math.FlxRect;
-import flixel.tweens.FlxTween;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 import shaderslmfao.ColorSwap;
 import states.PlayState;
 
@@ -76,7 +67,7 @@ class Note extends FlxSprite
 		this.noteData = noteData;
 
 		var daStage:String = PlayState.curStage;
-
+		offset.y = -100;
 		switch (daStage)
 		{
 			case 'ass' | 'schoolEvil':
@@ -223,7 +214,7 @@ class Note extends FlxSprite
 						prevNote.animation.play('redhold');
 				}
 
-				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed;
+				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed * 1;
 				prevNote.updateHitbox();
 				// prevNote.setGraphicSize();
 			}
@@ -265,10 +256,8 @@ class Note extends FlxSprite
 		{
 			canBeHit = false;
 
-			if (strumTime <= Conductor.songPosition)
+			if (strumTime <= Conductor.songPosition + (Conductor.safeZoneOffset * 0.1))
 			{
-				mustPress = true;
-				canBeHit = true;
 				wasGoodHit = true;
 			}
 		}

@@ -12,7 +12,7 @@ class Main extends Sprite
 		super();
 		//	PlayerSettings.init();
 
-		addChild(new FlxGame(0, 0, states.PlayState, 60, 60, true, false));
+		addChild(new FlxGame(0, 0, states.PlayState, 66, 66, true, false));
 		var fps_mem:FPS_Mem = new FPS_Mem(10, 10, 0xffffff);
 
 		addChild(fps_mem);

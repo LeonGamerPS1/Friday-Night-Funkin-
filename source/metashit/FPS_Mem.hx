@@ -1,6 +1,8 @@
 package metashit;
 
 import haxe.Timer;
+import haxe.display.Protocol.Version;
+import lime.app.Application;
 import openfl.display.FPS;
 import openfl.events.Event;
 import openfl.system.System;
@@ -38,9 +40,9 @@ class FPS_Mem extends TextField
 
 		addEventListener(Event.ENTER_FRAME, onEnter);
 
-		width = 150;
+		width = 156666660;
 
-		height = 70;
+		height = 6666666;
 	}
 
 	private function onEnter(_)
@@ -57,9 +59,8 @@ class FPS_Mem extends TextField
 		if (mem > memPeak)
 			memPeak = mem;
 
-		if (visible)
-		{
-			text = "FPS: " + times.length + "\nMEM: " + mem + " MB\nMEM peak: " + memPeak + " MB";
-		}
+		text = "FPS: " + times.length + "\nMEM: " + mem + " MB\nMEM peak: " + memPeak + " MB\n" + 'Device Vendor: '
+			+ lime.system.System.deviceVendor.toString() + "\nDevice Model: " + lime.system.System.deviceModel.toString() + "\nStarting Path: "
+			+ lime.system.System.applicationDirectory.toString() + "\nOperating system: " + lime.system.System.platformName.toString();
 	}
 }
